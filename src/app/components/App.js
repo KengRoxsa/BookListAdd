@@ -1,40 +1,55 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { use } from "react";
+import { useState, useEffect } from "react";
 import BookCreate from "./BookCreate";
 import BookList from "./BookList";
 import style from "./app.css";
+import axios from "axios";
 
 function App() {
   const [books, setBooks] = useState([
-    { id: 1, title: "The Great Gatsby" },
-    { id: 2, title: "To Kill a Mockingbird" },
-    { id: 3, title: "Pride and Prejudice" },
-    { id: 4, title: "The Catcher in the Rye" },
+    // { id: 1, title: "The Great Gatsby" },
+    // { id: 2, title: "To Kill a Mockingbird" },
+    // { id: 3, title: "Pride and Prejudice" },
+    // { id: 4, title: "The Catcher in the Rye" },
   ]);
+  const fetchBooks = async () => {
+    const response = await axios.get("http://localhost:3001/books");
+    setBooks(response.data);
+  }
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+  
 // function คือ จัดการ edit โดยส่งผ่านไปถึง BookEdit.js เพื่อแก้ title ตาม id
-  const editBookById = (id, newTitle) => {
+  const editBookById = async (id, newTitle) => {
+    const response = await axios.put(`http://localhost:3001/books/${id}`, { title: newTitle });
+
+
     const updateBooks = books.map((book) => {
       if (book.id === id) {
-        return { ...book, title: newTitle };
+        return { ...book, ...response.data };
       }
+      console.log(response.data);
       return book;
     })
     setBooks(updateBooks);
   }
 
-  const deleteBook = (id) => {
+  const deleteBook = async (id) => {
+    await axios.delete(`http://localhost:3001/books/${id}`);
     const updateBooks = books.filter((book) => book.id !== id);
     setBooks(updateBooks);
     console.log(updateBooks);
   };
-  const createBook = (title) => {
+  const createBook = async (title) => {
+    const response = await axios.post("http://localhost:3001/books", { title });
     const updateBooks = [
       ...books,
-      { id: Math.round(Math.random() * 9999), title: title },
+      response.data
     ];
     setBooks(updateBooks);
-    console.log(updateBooks);
+    // console.log(updateBooks);
   };
 
   return (<>

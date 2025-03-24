@@ -18,7 +18,7 @@ function BookCreate({ onCreate }) {
     <>
       <h1>BookCreate</h1>
       <form onSubmit={handleSubmit}>
-        <label>Title</label>
+        <label>Name Your Book : </label>
         <input value={title} onChange={handleChange}></input>
         <button type="submit">Submit</button>
       </form>
