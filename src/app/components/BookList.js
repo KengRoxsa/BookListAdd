@@ -1,0 +1,20 @@
+"use client";
+import App from "./App";;
+import React from 'react'
+import BookShow from './BookShow';
+
+function BookList({books,onDelete}) {
+    if (!Array.isArray(books)) {
+        console.error("Error: books is not an array or is undefined!", books);
+        return <p></p>;  // ให้ข้อความถ้า books ไม่ใช่ array
+      }
+    const renderBooks = books.map((book)=>{
+        return <BookShow key={book.id} book={book} onDelete={onDelete}/>
+    })
+
+  return (
+    <div>{renderBooks}</div>
+  )
+}
+
+export default BookList
