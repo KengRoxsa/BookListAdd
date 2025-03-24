@@ -13,7 +13,7 @@ function BookList({books,onDelete,onEdit}) {
     })
 
   return (
-    <div>{renderBooks}</div>
+    <div className="book-list-container">{renderBooks}</div>
   )
 }
 

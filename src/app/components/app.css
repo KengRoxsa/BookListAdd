@@ -1,0 +1,47 @@
+/* App.css */
+
+.app-container {
+    min-height: 100vh;
+    background-color: #f7fafc;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .app-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 16px;
+  }
+  
+  .app-subtitle {
+    font-size: 1.125rem;
+    color: #4a5568;
+    margin-bottom: 24px;
+  }
+  
+  .book-list-container {
+    width: 100%;
+    max-width: 900px; /* เพิ่มขนาด max-width ให้กว้างขึ้น */
+    
+    
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+     /* 3 คอลัมน์ที่มีขนาดเท่ากัน */
+    gap: 16px; /* ลดช่องว่างระหว่างแต่ละคอลัมน์ */
+  }
+  
+  .book-create-container {
+    width: 100%;
+    max-width: 600px; /* ปรับขนาดให้เหมาะสม */
+    margin-top: 24px;
+  }
+  
