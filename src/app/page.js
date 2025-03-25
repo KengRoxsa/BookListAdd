@@ -1,11 +1,14 @@
+"use client";
 import App from "./components/App";
+import React from "react";
+import BooksContext from "./Context/Books";
 
- function Home() {
+function Home() {
   return (
-    <div>
+    <BooksContext.Provider value={5}>
       <App />
-    </div>
+    </BooksContext.Provider>
   );
 }
 
-export default Home ;
+export default Home;

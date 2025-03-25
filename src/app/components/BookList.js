@@ -1,8 +1,8 @@
 "use client";
-import App from "./App";
+
 import React from 'react'
 import BookShow from './BookShow';
-
+import { useContext } from "react";
 function BookList({books,onDelete,onEdit}) {
     if (!Array.isArray(books)) {
         console.error("Error: books is not an array or is undefined!", books);
@@ -13,7 +13,11 @@ function BookList({books,onDelete,onEdit}) {
     })
 
   return (
-    <div className="book-list-container">{renderBooks}</div>
+    
+    <div className="book-list-container">
+      {renderBooks}
+      
+      </div>
   )
 }
 
