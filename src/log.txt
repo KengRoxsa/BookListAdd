@@ -49,3 +49,14 @@ return (
  ### 
  ที่มาในส่วนของย้ายไป context ก็พิจารณาว่าส่วนไหนใช้ร่วม แยก (application-component stat)
  ในที่นี้คือ books editBookById deleteBook fetchBooks createBook
+
+ ##
+ อันนี้พื้นฐาน 
+ const bla = {} มันคือสร้าง object ที่ต้องมีคีกับ วาลู่ ทว่าถ้ามันเหมือนกัน เขียนย่อได้ เช่นใน Books.js
+ const valueToShare = {
+        books,
+        deleteBook,
+        editBookById,
+        createBook,
+        fetchBooks
+    }

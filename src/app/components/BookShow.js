@@ -1,17 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import React from 'react'
 import BookEdit from "./BookEdit";
+import BooksContext from "../Context/Books";
 
-function BookShow({book,onDelete,onEdit}) {
-  
+function BookShow({book}) {
+  // book ตัวนี้คือรับจาก booklist 
     const [showEdit, setShowEdit] = useState(false);
+    const {deleteBook} = useContext(BooksContext);
 
     const handleClick = () => {
-        onDelete(book.id)
+      deleteBook(book.id)
     }
-    const handleSubmit = (id,title) => {
-      onEdit(id,title);
+    const handleSubmit = () => {
       setShowEdit(false);
     }
 

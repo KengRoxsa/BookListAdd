@@ -4,8 +4,11 @@ import React from 'react'
 import BookShow from './BookShow';
 import { useContext } from "react";
 import BooksContext from '../Context/Books';
-function BookList({books,onDelete,onEdit}) {
 
+function BookList() {
+
+  const {books} = useContext(BooksContext);
+  // อันล่างนี่เดี้ยวไม่ใช้แล้ว
   const { count, incrementCount } = useContext(BooksContext);
 
     if (!Array.isArray(books)) {
@@ -13,15 +16,15 @@ function BookList({books,onDelete,onEdit}) {
         return <p></p>;  // ให้ข้อความถ้า books ไม่ใช่ array
       }
     const renderBooks = books.map((book)=>{
-        return <BookShow onEdit={onEdit} key={book.id} book={book} onDelete={onDelete}/>
+        return <BookShow  key={book.id} book={book} />
     })
 
   return (
     
     <div className="book-list-container">
       {renderBooks}
-      test context {count}
-      <button onClick={incrementCount}>test incrementCount</button>
+      {/* test context {count}
+      <button onClick={incrementCount}>test incrementCount</button> */}
       </div>
   )
 }

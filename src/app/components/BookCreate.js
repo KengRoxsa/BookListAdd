@@ -1,7 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
+import BooksContext from "../Context/Books";
 
-function BookCreate({ onCreate }) {
+function BookCreate() {
+  const {createBook} = useContext(BooksContext);
   const [title, setTitle] = useState("");
 
   const handleChange = (event) => {
@@ -10,7 +12,7 @@ function BookCreate({ onCreate }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onCreate(title);
+    createBook(title);
     setTitle(""); // ล้างค่า input หลังจาก submit
   };
 
