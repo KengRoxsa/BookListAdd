@@ -1,0 +1,51 @@
+ติดตั้ง server json
+npm i json-server@0
+ไฟล์ db.json ซึ่งของ next มีอยู่แล้ว เข้าไปแก้เอา
+แก้เพิ่มคำสั่งใน json scripr
+"server": "json-server -p 3001 --watch db.json",
+มันคือคำสั่ง run server ผูกไว้เรียกใช้ง่าย
+ใช้ ### ขั้นตอนเทส api
+
+##
+
+ถ้าใช้ context ไปเขียน fn แยกไฟล์ใหม่ 
+แล้วก็เอาไปครอบคอมโพแนนที่รับ (ในที่นี้คือ app)  ด้วย ...provider 
+
+## 
+
+ใน next มีฝั่ง server + client ถ้าเมคชัวอย่าลืม 
+"ีuse client" "use server"
+ซึ่ง server ที่ว่ามันจะจัดการที่ฝั่ง server ไปเลยแล้วค่อยเอาลงมา client
+ลองดู getServerSideProps getStaticProps 
+
+##
+ตอนเอาไปใช้อย่าลืมสร้างตัวแปรเก็บค่าใหม่ด้วย
+
+##
+ยังไม่ค่อยเก็ตท่า {child} ของ context เท่าไหร่ มันเหมือนการรับ มากกว่าส่ง prop แต่ใีนใช้ได้ 
+function Provider({children}) 
+
+object ไม่สามารถ render ใน JSX ตรงๆ ได้ ปัญหานี้อาจเจอ ตอนใช้ทั้ง bookprovider , bookcontext 
+ไม่แน่ใจ แต่มันคือ obj render in jsx ไม่ได้
+ex 
+const value = useContext(BooksContext);
+
+return (
+  <div>
+    {value}  // ❌ Error เพราะ value เป็น object
+  </div>
+);
+ == แตก
+
+ const { count } = useContext(BooksContext);
+
+return (
+  <div>
+    Count: {count}  // ✅ ใช้ค่าที่เป็น number/string ได้
+  </div>
+);
+ == รอด
+
+ ### 
+ ที่มาในส่วนของย้ายไป context ก็พิจารณาว่าส่วนไหนใช้ร่วม แยก (application-component stat)
+ ในที่นี้คือ books editBookById deleteBook fetchBooks createBook

@@ -1,13 +1,13 @@
 "use client";
 import App from "./components/App";
 import React from "react";
-import BooksContext from "./Context/Books";
+import { BooksProvider} from "./Context/Books";
 
 function Home() {
   return (
-    <BooksContext.Provider value={5}>
+    <BooksProvider >
       <App />
-    </BooksContext.Provider>
+    </BooksProvider>
   );
 }
 
