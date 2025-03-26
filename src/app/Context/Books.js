@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { createContext } from "react";
 import axios from "axios";
 
@@ -8,10 +8,13 @@ function BooksProvider({children}) {
     const [books, setBooks] = useState([
         
       ]);
-      const fetchBooks = async () => {
+      const fetchBooks = useCallback(async () => {
         const response = await axios.get("http://localhost:3001/books");
         setBooks(response.data);
-      }
+      }, []);
+
+      // const stableFetchBooks = useCallback(fetchBooks,[]); เขียนรวบ fetch เลย
+    
     const [count, setCount] = useState(5);
 
     const editBookById = async (id, newTitle) => {
@@ -43,6 +46,7 @@ function BooksProvider({children}) {
         setBooks(updateBooks);
         // console.log(updateBooks);
       };
+      
 
     // const valueToShare = {
     //     count,
